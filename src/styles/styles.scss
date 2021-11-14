@@ -1,6 +1,7 @@
-html, body {
-    font-family: sans-serif;
-    color: rgba(0,0,0,.87);
-    background-color: 
-    #eeeeee;
-}
+@import "./base/settings";
+@import "./base/base";
+@import './buttons/buttons.scss';
+@import './buttons/social-media';
+
+//components
+@import "./components/auth";
