@@ -8,6 +8,7 @@ import {
 
 import { AuthRouter } from './AuthRouter'
 import { HomePage } from '../components/home/HomePage'
+import { JournalPage } from '../components/journal/JournalPage'
 
 export const AppRouter = () => {
     return (
@@ -16,6 +17,7 @@ export const AppRouter = () => {
                 <div>
                     <Switch>
                         <Route path='/auth' component={AuthRouter} />
+                        <Route exact path='/journal' component={JournalPage} />
                         <Route exact path='/' component={HomePage} />
                         <Redirect to='/' />
                     </Switch>

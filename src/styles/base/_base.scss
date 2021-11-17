@@ -8,17 +8,48 @@ html,
 body {
   color: rgba(1, 1, 1, 0.87);
   background-color: #eeeeee;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+main {
   width: 100%;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.5) ;  
+  border-radius: 10px;
+}
+
+
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lighten($color: black, $amount: 80) ; 
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lighten($color: black, $amount: 70) ; 
 }
 
 .pointer {
   cursor: pointer;
 }
 
-.container{
+.container {
   padding: 15px;
- 
 }
 
 .fluid-x {
@@ -36,7 +67,6 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
 }
 
 .fluid {
@@ -46,45 +76,89 @@ body {
 
 .radius-bottom {
   background: red;
-  border-radius: 0 0 11px 11px; 
+  border-radius: 0 0 11px 11px;
+}
+
+.inline {
+  display: inline;
+}
+
+.ml-1 {
+  margin-left: 2px;
+}
+
+.ml-2 {
+  margin-left: 5px;
+}
+.ml-3 {
+  margin-left: 8px;
+}
+
+.ml-4 {
+  margin-left: 13px;
+}
+.ml-5 {
+  margin-left: 21px;
 }
 
 .mt-1 {
-  margin-top: 1%;
+  margin-top: 2px;
+}
+
+.mr-1 {
+  margin-right: 2px;
+}
+
+.mr-2 {
+  margin-right: 5px;
+}
+.mr-3 {
+  margin-right: 8px;
+}
+
+.mr-4 {
+  margin-right: 13px;
+}
+.mr-5 {
+  margin-right: 21px;
+}
+
+.mt-1 {
+  margin-top: 2px;
 }
 
 .mt-2 {
-  margin-top: 2%;
+  margin-top: 5px;
 }
 .mt-3 {
-  margin-top: 3%;
+  margin-top: 8px;
 }
 
 .mt-4 {
-  margin-top: 4%;
+  margin-top: 13px;
 }
 .mt-5 {
-  margin-top: 5%;
+  margin-top: 21px;
 }
 
 .mb-1 {
-  margin-bottom: 1%;
+  margin-bottom: 2px;
 }
 
 .mb-2 {
-  margin-bottom: 2%;
+  margin-bottom: 5px;
 }
 .mb-3 {
-  margin-bottom: 3%;
+  margin-bottom: 8px;
 }
 
 .mb-4 {
-  margin-bottom: 4%;
+  margin-bottom: 13px;
 }
 .mb-5 {
-  margin-bottom: 5%;
+  margin-bottom: 21px;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }

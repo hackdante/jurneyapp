@@ -16,6 +16,14 @@
   width: 100%;
 }
 
+.dark {
+  color: white;
+}
+
+.light {
+  color: rgba(0, 0, 0, 0.87);
+}
+
 .btn-primary {
   background-color: $primary;
   color: white;
