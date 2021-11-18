@@ -1,17 +1,41 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
 import { Link } from 'react-router-dom'
+import { useLogin } from '../../hooks/useLogin'
+import { authLogin } from '../../actions/auth/authActions'
+
 
 export const LogingPage = () => {
+
+    const dispatch = useDispatch()
+
+    const [loginValues, handleInputChange] = useLogin({
+        email: 'genoma3d@gmail.com',
+        password: '12345678',
+    })
+
+
+    const { email, password } = loginValues;
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        dispatch(authLogin(12345, 'Nando'))
+
+    }
+
     return (
         <>
             <div className="container">
                 <h3 className="auth__title text-center mb-5">Loging Page</h3>
-                <form>
+                <form onSubmit={handleLogin}>
                     <input
                         type="text"
                         className="auth__input"
                         placeholder="User"
                         name="email"
+                        value={email}
+                        onChange={handleInputChange}
 
                     />
                     <input
@@ -20,6 +44,8 @@ export const LogingPage = () => {
                         placeholder="Password"
                         autoComplete="off"
                         name="password"
+                        value={password}
+                        onChange={handleInputChange}
                     />
                     <button
                         type="submit"
