@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
-import { authLogin } from '../../actions/auth/authActions'
+import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth/authActions'
 
 
 export const LogingPage = () => {
@@ -20,7 +20,13 @@ export const LogingPage = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        dispatch(authLogin(12345, 'Nando'))
+        dispatch(startLoginEmailPassword(email, password))
+
+    }
+
+    const handleLoginGoogle = () => {
+
+        dispatch(startGoogleLogin())
 
     }
 
@@ -61,7 +67,10 @@ export const LogingPage = () => {
 
             <div className="container container-center auth__social-background radius-bottom">
                 <p className="text-center mt-5 mb-5"><strong>Login with social media</strong> </p>
-                <div className="google-btn">
+                <div
+                    className="google-btn"
+                    onClick={handleLoginGoogle}
+                >
 
                     <div className="google-icon-wrapper">
                         <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
