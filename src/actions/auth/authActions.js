@@ -23,10 +23,7 @@ export const startGoogleLogin = () => {
         signInWithPopup(auth, googleAuthProvider).then(({ user }) => {
             console.log('User ====> ', user)
             dispatch(authLogin(user.uid, user.displayName))
-
-        }
-
-        )
+        })
 
 
 

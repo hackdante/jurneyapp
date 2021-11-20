@@ -1,33 +1,30 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-
 import { Link } from 'react-router-dom'
-import { useLogin } from '../../hooks/useLogin'
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth/authActions'
+import { useForm } from '../../hooks/useForms'
 
 
 export const LogingPage = () => {
 
     const dispatch = useDispatch()
 
-    const [loginValues, handleInputChange] = useLogin({
-        email: 'genoma3d@gmail.com',
-        password: '12345678',
+    const [formValues, handleInputChange] = useForm({
+        email: '',
+        password: '',
     })
 
 
-    const { email, password } = loginValues;
+    const { email, password } = formValues;
 
     const handleLogin = (e) => {
         e.preventDefault()
+        console.log(email === '' && 'Email is empty' , password === '' && 'Password is empty')
         dispatch(startLoginEmailPassword(email, password))
-
     }
 
     const handleLoginGoogle = () => {
-
         dispatch(startGoogleLogin())
-
     }
 
     return (
