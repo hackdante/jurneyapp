@@ -12,7 +12,6 @@ body {
   width: 100vw;
 }
 
-
 main {
   width: 100%;
 }
@@ -30,13 +29,10 @@ main {
   border-radius: 10px;
 }
 
-
- 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: lighten($color: black, $amount: 80) ; 
   border-radius: 10px;
-
 }
 
 /* Handle on hover */
@@ -77,6 +73,28 @@ main {
 .radius-bottom {
   background: red;
   border-radius: 0 0 11px 11px;
+}
+
+.alert {
+  background-color: lighten($color: $error, $amount: 45);
+  padding: 10px;
+  border: 1px solid $error;
+  border-radius: 11px;
+  h4{
+    color: $error;
+    line-height: 1.3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  p{
+    color: $error;
+    line-height: 1.1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+  }
 }
 
 .inline {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth/authActions'
 import { useForm } from '../../hooks/useForms'
@@ -8,6 +8,11 @@ import { useForm } from '../../hooks/useForms'
 export const LogingPage = () => {
 
     const dispatch = useDispatch()
+    const { alert } = useSelector(state => state)
+    const { msgError } = useSelector(state => state)
+    console.log('state ==> ', alert.loading)
+    console.log('msgError ==> ', msgError.msgError)
+
 
     const [formValues, handleInputChange] = useForm({
         email: '',
@@ -19,7 +24,8 @@ export const LogingPage = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        console.log(email === '' && 'Email is empty' , password === '' && 'Password is empty')
+
+        console.log(email === '' && 'Email is empty ', email, ' <===> ', password === '' && 'Password is empty ', password)
         dispatch(startLoginEmailPassword(email, password))
     }
 
@@ -53,7 +59,7 @@ export const LogingPage = () => {
                     <button
                         type="submit"
                         className="btn btn-block btn-primary mb-5 mt-5"
-                        disabled={false}
+                        disabled={alert.loading}
                     >
                         Submit
                     </button>
