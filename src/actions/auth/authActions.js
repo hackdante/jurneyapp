@@ -4,6 +4,11 @@ import { googleAuthProvider } from "../../firebase/firebase-config";
 import { types } from "../../types/types"
 import { finishLoading, startLoading } from "../loaders/loadersActions";
 import Swal from "sweetalert2";
+import { errorTypes } from "../../types/errorTypes";
+
+
+
+
 
 export const startLoginEmailPassword = (email, password) => {
 
@@ -15,7 +20,32 @@ export const startLoginEmailPassword = (email, password) => {
             dispatch(finishLoading())
         }).catch(error => {
             dispatch(finishLoading())
-            Swal.fire('Error Auth!!!', error, 'error')
+            switch (error.code) {
+                case errorTypes.invalidEmail:
+                    Swal.fire(
+                        `Error ${error.code}`,
+                        'The provided value for the email user property is invalid. It must be a string email address.',
+                        'error')
+                    break;
+
+                case errorTypes.userNotFound:
+                    Swal.fire(
+                        `Error ${error.code}`,
+                        'There is no existing user record corresponding to the provided identifier.',
+                        'error')
+                    break;
+
+                case errorTypes.unauthorizedContinueUri:
+                    Swal.fire(
+                        `Error ${error.code}`,
+                        'The domain of the continue URL is not whitelisted. Whitelist the domain in the Firebase Console.',
+                        'error')
+                    break;
+
+                default:
+                    Swal.fire('Unidentified Error', 'An unknown error has been generated, please contact the administrator.', 'error')
+                    break;
+            }
         })
     }
 }
@@ -31,8 +61,8 @@ export const startRegisterWithEmailAndPasword = (email, password, name) => {
             .catch(error => {
                 const errorCode = error.code;
                 const errorMsg = error.message
-                console.error(errorCode)
-                console.error(errorMsg)
+                Swal.fire(errorCode, errorMsg, 'error')
+
             })
     }
 }

@@ -9,10 +9,9 @@ export const LogingPage = () => {
 
     const dispatch = useDispatch()
     const { alert } = useSelector(state => state)
-    const { msgError } = useSelector(state => state)
-    console.log('state ==> ', alert.loading)
-    console.log('msgError ==> ', msgError.msgError)
 
+
+  
 
     const [formValues, handleInputChange] = useForm({
         email: '',
