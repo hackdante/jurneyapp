@@ -10,9 +10,6 @@ export const LogingPage = () => {
     const dispatch = useDispatch()
     const { alert } = useSelector(state => state)
 
-
-  
-
     const [formValues, handleInputChange] = useForm({
         email: '',
         password: '',
@@ -23,8 +20,6 @@ export const LogingPage = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-
-        console.log(email === '' && 'Email is empty ', email, ' <===> ', password === '' && 'Password is empty ', password)
         dispatch(startLoginEmailPassword(email, password))
     }
 

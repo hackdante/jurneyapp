@@ -11,13 +11,13 @@ export const RegisterPage = () => {
 
     const dispatch = useDispatch();
     const { msgError } = useSelector(state => state.alert);
-   
+
     const [formValues, handleInputChange] = useForm({
-        name: 'Leo Gonzalez',
-        email: 'genomad@gmails.com',
-        checkEmail: 'genomad@gmails.com',
-        password: '12345678',
-        checkPass: '12345678'
+        name: '',
+        email: '',
+        checkEmail: '',
+        password: '',
+        checkPass: ''
     })
 
     const { name, email, checkEmail, password, checkPass } = formValues;
@@ -25,7 +25,6 @@ export const RegisterPage = () => {
     const handleRegister = (e) => {
         e.preventDefault()
         const validation = isFormValid()
-        console.log('=> ', validation)
         if (validation) {
             dispatch(startRegisterWithEmailAndPasword(email, password, name))
         } else {

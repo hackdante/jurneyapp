@@ -6,18 +6,17 @@ import { finishLoading, startLoading } from "../loaders/loadersActions";
 import Swal from "sweetalert2";
 import { errorTypes } from "../../types/errorTypes";
 
-
-
-
-
 export const startLoginEmailPassword = (email, password) => {
-
     return (dispatch) => {
         dispatch(startLoading());
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password).then(({ user }) => {
             dispatch(authLogin(user.uid, user.displayName))
             dispatch(finishLoading())
+            Swal.fire(
+                `Login Success`,
+                'Auth is Ready and Success',
+                'success')
         }).catch(error => {
             dispatch(finishLoading())
             switch (error.code) {
@@ -68,6 +67,7 @@ export const startRegisterWithEmailAndPasword = (email, password, name) => {
 }
 
 export const startGoogleLogin = () => {
+
     return (dispatch) => {
         const auth = getAuth()
         signInWithPopup(auth, googleAuthProvider).then(({ user }) => {

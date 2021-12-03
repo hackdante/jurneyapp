@@ -15,6 +15,8 @@ import { JournalPage } from '../components/journal/JournalPage'
 import { authLogin } from '../actions/auth/authActions';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
+import { startLoadingNotes } from '../actions/notes/notes';
+
 
 export const AppRouter = () => {
     const auth = getAuth();
@@ -24,10 +26,11 @@ export const AppRouter = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user?.uid) {
                 dispatch(authLogin(user.uid, user.displayName))
                 setIsLoggedIn(true)
+                dispatch(startLoadingNotes(user.uid))
             } else {
                 setIsLoggedIn(false)
             }
