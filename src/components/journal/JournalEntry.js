@@ -1,9 +1,27 @@
 import React from 'react'
+import moment from 'moment'
+import { activeNote } from '../../actions/notes/notes'
+import { useDispatch } from 'react-redux'
+
 
 export const JournalEntry = ({ id, date, title, body, urlImage = 'https://live.staticflickr.com/65535/51683440632_8c9ddac384_s.jpg' }) => {
-    console.log('========>', id, date, title, body, urlImage)
+    const noteDate = moment(date)
+    const dispatch = useDispatch()
+
+
+    const handleGoToEntry = () => {
+        console.log('Entry')
+        dispatch(activeNote(id, {
+            title,
+            body,
+            date,
+            urlImage
+
+        }))
+    }
+
     return (
-        <div className="journal__entry pointer">
+        <div className="journal__entry pointer" onClick={handleGoToEntry}>
 
 
             <div className="journal__entry-picture" style={{
@@ -17,8 +35,8 @@ export const JournalEntry = ({ id, date, title, body, urlImage = 'https://live.s
             </div>
 
             <div className="journal__entry-date-box mr-3">
-                <span>Monday</span>
-                <h4>28</h4>
+                <span>{noteDate.format('dddd')}</span>
+                <h4>{noteDate.format('Do')}</h4>
             </div>
 
 
